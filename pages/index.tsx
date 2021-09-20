@@ -92,7 +92,7 @@ ${_2xlClasses.length !== 0 ? breakpoints[4][1].replace('...', '\n  ' + convertTo
 						</button>
 					</CopyToClipboard>
 
-					<GitHubButton type="stargazers" namespace="pjijin" repo="Cover-Image-Generator" />
+					<GitHubButton type="stargazers" namespace="Devzstudio" repo="tailwind_to_css" />
 
 					<div className="bg-gray-800 hover:bg-gray-700 rounded p-2 px-5 cursor-pointer">
 						<a

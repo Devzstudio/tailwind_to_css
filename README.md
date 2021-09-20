@@ -6,9 +6,9 @@ Convert Tailwind class to css
  <b>  <a href="https://codekeep.io/screenshot">Generate code screenshot with CodeKeep Screenshot</a>   </b>
 </p>
 
-[![TailwindTocss](https://github.com/devzstudio/tailwind_to_css/blob/master/preview.png?raw=true 'TailwindTocss')]()
+[![TailwindTocss](https://raw.githubusercontent.com/Devzstudio/tailwind_to_css/main/preview.png 'TailwindTocss')]()
 
-✅ Live Preview: <a href="https://blogcover.now.sh/" target="_BLANK">Click Here</a>
+✅ Live Preview: <a href="https://tailwind-to-css.vercel.app/" target="_BLANK">Click Here</a>
 
 ## ✨ Features
 
