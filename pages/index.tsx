@@ -33,6 +33,7 @@ const convertToCss = (classNames: string[]) => {
   return cssCode;
 };
 
+
 const getBreakPoints = (input: String, breakpoint: String) => {
   return input
     .split(' ')
@@ -95,13 +96,13 @@ ${
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <header className="bg-gray-900 flex p-2">
+        <header className="bg-gray-900 flex py-2 px-1 md:p-2">
           <h1 className="flex-grow font-bold	flex items-center text-gray-300 md:mr-2">
             <RefreshIcon className="text-gray-300 md:mr-1 w-6 h-6" />
             <span className="hidden md:flex">Tailwind To CSS</span>
           </h1>
 
-          <section className="space-x-2 flex items-center">
+          <section className="space-x-1 md:space-x-2 flex items-center">
             <GitHubButton
               type="stargazers"
               namespace="Devzstudio"
