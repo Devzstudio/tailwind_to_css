@@ -129,7 +129,7 @@ ${
               </button>
             </CopyToClipboard>
 
-            <div className="bg-gray-800 hover:bg-gray-700 rounded p-2 md:px-4 cursor-pointer ">
+            <div className="bg-gray-800 hover:bg-gray-700 rounded py-2 px-3 cursor-pointer ">
               <a
                 target="_BLANK"
                 href="https://codekeep.io?ref=tailwind-to-css"
@@ -152,9 +152,9 @@ ${
         </header>
       </nav>
 
-      <section className="flex flex-col md:flex-row bg-gray-900 w-full">
+      <section className="flex flex-row bg-gray-900 w-full">
         <textarea
-          className="w-full h-screen resize-none border-gray-700 border-b-4  md:border-none flex-grow p-3 bg-gray-800 text-gray-300  outline-none "
+          className="w-full h-screen resize-none border-gray-700 border-none flex-grow p-3 bg-gray-800 text-gray-300  outline-none "
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Tailwind class names"
