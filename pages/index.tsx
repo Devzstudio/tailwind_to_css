@@ -8,7 +8,7 @@ import CheatSheet from '../cheatsheet';
 import toast from 'react-hot-toast';
 import { useHotkeys } from 'react-hotkeys-hook';
 
-const convertToCss = (classNames) => {
+const convertToCss = (classNames: string[]) => {
 	let cssCode = ``;
 	CheatSheet.forEach((element) => {
 		element.content.forEach((content) => {
@@ -73,9 +73,9 @@ ${_2xlClasses.length !== 0 ? breakpoints[4][1].replace('...', '\n  ' + convertTo
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<header className="bg-gray-900 flex justify-between p-2">
+			<header className="bg-gray-900 flex p-2">
 				<h1 className="flex-grow font-bold	flex items-center text-gray-300">
-					<RefreshIcon className="text-gray-300 mr-1 w-5 h-5" /> Tailwind To CSS
+					<RefreshIcon className="text-gray-300 mr-1 w-6 h-6" /> <span className="hidden sm:flex">Tailwind To CSS</span>
 				</h1>
 
 				<div className="space-x-5 flex items-center">
@@ -114,10 +114,10 @@ ${_2xlClasses.length !== 0 ? breakpoints[4][1].replace('...', '\n  ' + convertTo
 				</div>
 			</header>
 
-			<section className="flex min-h-screen relative bg-gray-900 w-full h-full">
+			<section className="flex flex-row bg-gray-900 w-full h-full ">
 				<textarea
-					className="w-full h-full border flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none border-r"
-					style={{ height: '90vh' }}
+					className="w-full resize-none h-full border flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none border-r"
+					style={{ height: '100vh' }}
 					value={input}
 					onChange={(e) => setInput(e.target.value)}
 					placeholder="Tailwind class names"
@@ -125,8 +125,8 @@ ${_2xlClasses.length !== 0 ? breakpoints[4][1].replace('...', '\n  ' + convertTo
 
 				<div className="w-full h-full border-l border-gray-700 flex-grow ">
 					<textarea
-						style={{ height: '90vh' }}
-						className="w-full h-full border flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
+						style={{ height: '100vh' }}
+						className="w-full resize-none h-full border flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
 						placeholder="Result"
 						value={result}
 						readOnly
