@@ -13291,23 +13291,23 @@ const CheatSheet = [
     {
         "title": "Flexbox",
         "content": [
-            {
-                "title": "Display",
-                "docs": "https://tailwindcss.com/docs/display",
-                "description": "Sets element to be a flex container.",
-                "table": [
-                    [
-                        ".flex",
-                        "display: flex;",
-                        ""
-                    ],
-                    [
-                        ".inline-flex",
-                        "display: inline-flex;",
-                        ""
-                    ]
-                ]
-            },
+            // {
+            //     "title": "Display",
+            //     "docs": "https://tailwindcss.com/docs/display",
+            //     "description": "Sets element to be a flex container.",
+            //     "table": [
+            //         [
+            //             ".flex",
+            //             "display: flex;",
+            //             ""
+            //         ],
+            //         [
+            //             ".inline-flex",
+            //             "display: inline-flex;",
+            //             ""
+            //         ]
+            //     ]
+            // },
             {
                 "title": "Flex Direction",
                 "docs": "https://tailwindcss.com/docs/flexbox-direction",
