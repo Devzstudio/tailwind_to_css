@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/outline';
 import GitHubButton from 'react-github-button';
 import Image from 'next/image';
-
+import CodeKeep from '../public/CodeKeep.svg'
 import CheatSheet from '../cheatsheet';
 import toast from 'react-hot-toast';
 import { useHotkeys } from 'react-hotkeys-hook';
@@ -104,7 +104,7 @@ ${
             <span className="hidden md:flex">Tailwind To CSS</span>
           </h1>
 
-          <div className="space-x-2 md:space-x-5 flex items-center">
+          <div className="space-x-2 flex items-center">
             <GitHubButton
               type="stargazers"
               namespace="Devzstudio"
@@ -143,7 +143,7 @@ ${
                   alt="CodeKeep"
                   height={24}
                   width={24}
-                  src="https://camo.githubusercontent.com/691d71c68074e37ce9cffaf09e050cd645f2e65e/68747470733a2f2f636f64656b6565702e696f2f6173736574732f69636f6e2e737667"
+                  src={CodeKeep}
                 />
                 <span className="pl-1">CodeKeep</span>
               </a>
