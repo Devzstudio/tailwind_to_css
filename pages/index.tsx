@@ -109,6 +109,7 @@ ${
               type="stargazers"
               namespace="Devzstudio"
               repo="tailwind_to_css"
+              className="sm:mr-2"
             />
 
             <button
