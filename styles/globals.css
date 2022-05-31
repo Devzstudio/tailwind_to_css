@@ -2,26 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-	padding: 0;
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-		Helvetica Neue, sans-serif;
-}
-
-a {
-	color: inherit;
-	text-decoration: none;
-}
-
-* {
-	box-sizing: border-box;
-}
-
-textarea {
-	width: 100%;
-	height: 100%;
+@layer base{
+	body{
+		@apply max-h-screen overflow-hidden bg-gray-900
+	}
 }
 
 .stargazers {
@@ -35,7 +19,7 @@ textarea {
 	font-size: 12px;
 	margin-left: 15px;
 	outline: 0px;
-}
+} 
 
 .github-btn {
 	font: bold 11px/14px 'Helvetica Neue', Helvetica, Arial, sans-serif;

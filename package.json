@@ -1,6 +1,6 @@
 {
   "name": "tailwind_to_css",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,22 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@heroicons/react": "^1.0.4",
-    "autoprefixer": "^10.3.4",
-    "next": "11.1.2",
-    "postcss": "^8.3.6",
-    "react": "17.0.2",
-    "react-copy-to-clipboard": "^5.0.4",
-    "react-dom": "17.0.2",
+    "@heroicons/react": "^1.0.6",
+    "next": "12.1.6",
+    "react": "18.1.0",
+    "react-copy-to-clipboard": "^5.1.0",
+    "react-dom": "18.1.0",
     "react-github-button": "^0.1.11",
-    "react-hot-toast": "^2.1.1",
-    "react-hotkeys-hook": "^3.4.0",
-    "tailwindcss": "^2.2.15"
+    "react-hot-toast": "^2.2.0",
+    "react-hotkeys-hook": "^3.4.6"
   },
   "devDependencies": {
-    "@types/react": "^17.0.22",
-    "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2",
-    "typescript": "^4.4.3"
+    "@types/node": "^17.0.36",
+    "@types/react": "^18.0.9",
+    "autoprefixer": "^10.4.7",
+    "eslint": "8.16.0",
+    "eslint-config-next": "12.1.6",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.0.24",
+    "typescript": "^4.7.2"
   }
 }
