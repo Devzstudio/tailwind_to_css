@@ -15,8 +15,7 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.1.0",
     "react-github-button": "^0.1.11",
-    "react-hot-toast": "^2.2.0",
-    "react-hotkeys-hook": "^3.4.6"
+    "react-hot-toast": "^2.2.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.36",

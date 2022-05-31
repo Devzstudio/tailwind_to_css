@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
+import toast from 'react-hot-toast';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
   ClipboardCopyIcon,
@@ -7,11 +9,9 @@ import {
   RefreshIcon,
 } from '@heroicons/react/outline';
 import GitHubButton from 'react-github-button';
-import Image from 'next/image';
-import CodeKeep from '../public/CodeKeep.svg'
+import CodeKeep from '../public/CodeKeep.svg';
 import CheatSheet from '../cheatsheet';
-import toast from 'react-hot-toast';
-import { useHotkeys } from 'react-hotkeys-hook';
+
 
 const convertToCss = (classNames: string[]) => {
   let cssCode = ``;
@@ -34,11 +34,11 @@ const convertToCss = (classNames: string[]) => {
   return cssCode;
 };
 
-const getBreakPoints = (input, breakpoint) => {
+const getBreakPoints = (input:String, breakpoint:String) => {
   return input
     .split(' ')
-    .filter((i) => i.startsWith(breakpoint + ':'))
-    .map((i) => '.' + i.substring(3));
+    .filter((i:String) => i.startsWith(breakpoint + ':'))
+    .map((i:String) => '.' + i.substring(3));
 };
 
 export default function App() {
@@ -87,8 +87,6 @@ ${
     setResult(resultCss);
   };
 
-  useHotkeys('ctrl+k', () => processInput());
-  useHotkeys('cmd+k', () => processInput());
   return (
     <main>
       <nav className="w-full">
@@ -140,12 +138,7 @@ ${
                 <span className="pr-1 text-sm hidden md:flex">
                   Sponsored by
                 </span>
-                <Image
-                  alt="CodeKeep"
-                  height={24}
-                  width={24}
-                  src={CodeKeep}
-                />
+                <Image alt="CodeKeep" height={24} width={24} src={CodeKeep} />
                 <span className="pl-1">CodeKeep</span>
               </a>
             </div>

@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2022 Devzstudio
+Copyright (c) 2022 - Current Devzstudio <https://github.com/Devzstudio/tailwind_to_css>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

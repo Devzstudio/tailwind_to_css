@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import 'tailwindcss/tailwind.css';
+
 import { Toaster } from 'react-hot-toast';
 
 function MyApp({ Component, pageProps }) {
