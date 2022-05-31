@@ -89,68 +89,73 @@ ${
 
   useHotkeys('ctrl+k', () => processInput());
   useHotkeys('cmd+k', () => processInput());
-
+//TODO FIX HEIGHT OF TEXTAREAS
   return (
-    <div>
-      <Head>
-        <title>Tailwind To CSS</title>
-        <meta name="description" content="Tailwind To CSS" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <main>
+      <nav className="sticky top-0 w-full">
+        <Head>
+          <title>Tailwind To CSS</title>
+          <meta name="description" content="Tailwind To CSS" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <header className="bg-gray-900 flex p-2">
-        <h1 className="flex-grow font-bold	flex items-center text-gray-300 mr-2">
-          <RefreshIcon className="text-gray-300 md:mr-1 w-6 h-6" />{' '}
-          <span className="hidden md:flex">Tailwind To CSS</span>
-        </h1>
+        <header className="bg-gray-900 flex p-2">
+          <h1 className="flex-grow font-bold	flex items-center text-gray-300 mr-2">
+            <RefreshIcon className="text-gray-300 md:mr-1 w-6 h-6" />{' '}
+            <span className="hidden md:flex">Tailwind To CSS</span>
+          </h1>
 
-        <div className="space-x-2 md:space-x-5 flex items-center">
-		<GitHubButton
-            type="stargazers"
-            namespace="Devzstudio"
-            repo="tailwind_to_css"
-          />
+          <div className="space-x-2 md:space-x-5 flex items-center">
+            <GitHubButton
+              type="stargazers"
+              namespace="Devzstudio"
+              repo="tailwind_to_css"
+            />
 
-          <button
-            className="flex items-center bg-blue-500 hover:bg-blue-600 rounded-md text-white px-3 py-2"
-            onClick={() => processInput()}
-          >
-            <PlayIcon className="w-6 h-6 md:h-4 md:w-4 text-gray-100 mr-1" /> <span className="hidden md:flex">Convert</span>
-          </button>
-
-          <CopyToClipboard
-            text={result}
-            onCopy={() => toast.success('Copied!')}
-          >
-            <button className="flex items-center px-3 py-2 bg-gray-100 text-gray-600 hover:bg-gray-400 hover:text-gray-900 rounded">
-              <ClipboardCopyIcon className="w-6 h-6 md:h-4 md:w-4 text-gray-500 mr-1" /> <span className="hidden md:flex">Copy</span>
-            </button>
-          </CopyToClipboard>
-
-          <div className="bg-gray-800 hover:bg-gray-700 rounded p-2 md:px-4 cursor-pointer ">
-            <a
-              target="_BLANK"
-              href="https://codekeep.io?ref=tailwind-to-css"
-              rel="noreferrer noopener"
-              className="flex items-center text-gray-400"
+            <button
+              className="flex items-center bg-blue-500 hover:bg-blue-600 rounded-md text-white px-3 py-2"
+              onClick={() => processInput()}
             >
-              <span className="pr-1 text-sm hidden md:flex">Sponsored by</span>
-              <Image
-                alt="CodeKeep"
-                height={24}
-                width={24}
-                src="https://camo.githubusercontent.com/691d71c68074e37ce9cffaf09e050cd645f2e65e/68747470733a2f2f636f64656b6565702e696f2f6173736574732f69636f6e2e737667"
-              />
-              <span className="pl-1">CodeKeep</span>
-            </a>
-          </div>
-        </div>
-      </header>
+              <PlayIcon className="w-6 h-6 md:h-4 md:w-4 text-gray-100 mr-1" />{' '}
+              <span className="hidden md:flex">Convert</span>
+            </button>
 
-      <section className="flex flex-col md:flex-row bg-gray-900 w-full h-full ">
+            <CopyToClipboard
+              text={result}
+              onCopy={() => toast.success('Copied!')}
+            >
+              <button className="flex items-center px-3 py-2 bg-gray-100 text-gray-600 hover:bg-gray-400 hover:text-gray-900 rounded">
+                <ClipboardCopyIcon className="w-6 h-6 md:h-4 md:w-4 text-gray-500 mr-1" />{' '}
+                <span className="hidden md:flex">Copy</span>
+              </button>
+            </CopyToClipboard>
+
+            <div className="bg-gray-800 hover:bg-gray-700 rounded p-2 md:px-4 cursor-pointer ">
+              <a
+                target="_BLANK"
+                href="https://codekeep.io?ref=tailwind-to-css"
+                rel="noreferrer noopener"
+                className="flex items-center text-gray-400"
+              >
+                <span className="pr-1 text-sm hidden md:flex">
+                  Sponsored by
+                </span>
+                <Image
+                  alt="CodeKeep"
+                  height={24}
+                  width={24}
+                  src="https://camo.githubusercontent.com/691d71c68074e37ce9cffaf09e050cd645f2e65e/68747470733a2f2f636f64656b6565702e696f2f6173736574732f69636f6e2e737667"
+                />
+                <span className="pl-1">CodeKeep</span>
+              </a>
+            </div>
+          </div>
+        </header>
+      </nav>
+
+      <section className="flex flex-col md:flex-row bg-gray-900 w-full">
         <textarea
-          className="w-full resize-none h-full border-gray-700 border-b  md:border-none flex-grow p-3 bg-gray-800 text-gray-300  outline-none "
-          style={{ height: '100vh' }}
+          className="w-full h-screen resize-none border-gray-700 border-b-4  md:border-none flex-grow p-3 bg-gray-800 text-gray-300  outline-none "
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Tailwind class names"
@@ -158,14 +163,13 @@ ${
 
         <div className="w-full h-full border-l border-gray-700 flex-grow ">
           <textarea
-            style={{ height: '100vh' }}
-            className="w-full resize-none h-full border flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
+            className="w-full h-screen resize-none border flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
             placeholder="Result"
             value={result}
             readOnly
           ></textarea>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
