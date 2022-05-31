@@ -89,10 +89,9 @@ ${
 
   useHotkeys('ctrl+k', () => processInput());
   useHotkeys('cmd+k', () => processInput());
-//TODO FIX HEIGHT OF TEXTAREAS
   return (
     <main>
-      <nav className="sticky top-0 w-full">
+      <nav className="w-full">
         <Head>
           <title>Tailwind To CSS</title>
           <meta name="description" content="Tailwind To CSS" />
