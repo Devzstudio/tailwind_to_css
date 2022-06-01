@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
+import toast from 'react-hot-toast';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
   ClipboardCopyIcon,
@@ -7,11 +9,8 @@ import {
   RefreshIcon,
 } from '@heroicons/react/outline';
 import GitHubButton from 'react-github-button';
-import Image from 'next/image';
-import CodeKeep from '../public/CodeKeep.svg'
+import CodeKeep from '../public/CodeKeep.svg';
 import CheatSheet from '../cheatsheet';
-import toast from 'react-hot-toast';
-import { useHotkeys } from 'react-hotkeys-hook';
 
 const convertToCss = (classNames: string[]) => {
   let cssCode = ``;
@@ -34,11 +33,12 @@ const convertToCss = (classNames: string[]) => {
   return cssCode;
 };
 
-const getBreakPoints = (input, breakpoint) => {
+
+const getBreakPoints = (input: String, breakpoint: String) => {
   return input
     .split(' ')
-    .filter((i) => i.startsWith(breakpoint + ':'))
-    .map((i) => '.' + i.substring(3));
+    .filter((i: String) => i.startsWith(breakpoint + ':'))
+    .map((i: String) => '.' + i.substring(3));
 };
 
 export default function App() {
@@ -87,8 +87,6 @@ ${
     setResult(resultCss);
   };
 
-  useHotkeys('ctrl+k', () => processInput());
-  useHotkeys('cmd+k', () => processInput());
   return (
     <main>
       <nav className="w-full">
@@ -98,13 +96,13 @@ ${
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <header className="bg-gray-900 flex p-2">
-          <h1 className="flex-grow font-bold	flex items-center text-gray-300 mr-2">
-            <RefreshIcon className="text-gray-300 md:mr-1 w-6 h-6" />{' '}
+        <header className="bg-gray-900 flex py-2 px-1 md:p-2">
+          <h1 className="flex-grow font-bold	flex items-center text-gray-300 md:mr-2">
+            <RefreshIcon className="text-gray-300 md:mr-1 w-6 h-6" />
             <span className="hidden md:flex">Tailwind To CSS</span>
           </h1>
 
-          <div className="space-x-2 flex items-center">
+          <section className="space-x-1 md:space-x-2 flex items-center">
             <GitHubButton
               type="stargazers"
               namespace="Devzstudio"
@@ -113,10 +111,10 @@ ${
             />
 
             <button
-              className="flex items-center bg-blue-500 hover:bg-blue-600 rounded-md text-white px-3 py-2"
+              className="flex items-center bg-blue-500 hover:bg-blue-600 rounded text-white px-2.5 py-2"
               onClick={() => processInput()}
             >
-              <PlayIcon className="w-6 h-6 md:h-4 md:w-4 text-gray-100 mr-1" />{' '}
+              <PlayIcon className="w-6 h-6 text-gray-100 md:mr-1" />
               <span className="hidden md:flex">Convert</span>
             </button>
 
@@ -124,51 +122,45 @@ ${
               text={result}
               onCopy={() => toast.success('Copied!')}
             >
-              <button className="flex items-center px-3 py-2 bg-gray-100 text-gray-600 hover:bg-gray-400 hover:text-gray-900 rounded">
-                <ClipboardCopyIcon className="w-6 h-6 md:h-4 md:w-4 text-gray-500 mr-1" />{' '}
+              <button className="flex items-center px-2.5 py-2 bg-gray-100 text-gray-600 hover:bg-gray-400 hover:text-gray-900 rounded">
+                <ClipboardCopyIcon className="w-6 h-6 text-gray-500 md:mr-1" />
                 <span className="hidden md:flex">Copy</span>
               </button>
             </CopyToClipboard>
 
-            <div className="bg-gray-800 hover:bg-gray-700 rounded py-2 px-3 cursor-pointer ">
+            <button className="bg-gray-800 hover:bg-gray-700 rounded py-2 px-2">
               <a
                 target="_BLANK"
                 href="https://codekeep.io?ref=tailwind-to-css"
                 rel="noreferrer noopener"
                 className="flex items-center text-gray-400"
               >
-                <span className="pr-1 text-sm hidden md:flex">
+                <span className="pr-1 text-sm hidden text-sm md:flex">
                   Sponsored by
                 </span>
-                <Image
-                  alt="CodeKeep"
-                  height={24}
-                  width={24}
-                  src={CodeKeep}
-                />
-                <span className="pl-1">CodeKeep</span>
+                <Image alt="CodeKeep" height={24} width={24} src={CodeKeep} />
+                <span className="pl-1 text-sm">CodeKeep</span>
               </a>
-            </div>
-          </div>
+            </button>
+          </section>
         </header>
       </nav>
 
-      <section className="flex flex-row bg-gray-900 w-full">
+      <section className="flex flex-row bg-gray-900 h-screen">
         <textarea
-          className="w-full h-screen resize-none border-gray-700 border-none flex-grow p-3 bg-gray-800 text-gray-300  outline-none "
+          className="w-full resize-none  border-none flex-grow p-3 bg-gray-800 text-gray-300  outline-none "
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Tailwind class names"
         ></textarea>
 
-        <div className="w-full h-full border-l border-gray-700 flex-grow ">
-          <textarea
-            className="w-full h-screen resize-none border flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
-            placeholder="Result"
-            value={result}
-            readOnly
-          ></textarea>
-        </div>
+        <div className="border-l border-gray-700" />
+        <textarea
+          className="w-full resize-none flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
+          placeholder="Result"
+          value={result}
+          readOnly
+        ></textarea>
       </section>
     </main>
   );
