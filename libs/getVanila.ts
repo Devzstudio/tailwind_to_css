@@ -9,17 +9,33 @@
 //   //         <div class="c"></div>
 //   //     </div>
 //   //   </div>`;
-//   //   console.log('ALO?');
-//   //   console.log(testEl);
-//   //   console.log(getNodes(testEl));
 // }
 
+import { Base64 } from './base64';
 import { classesTailwind } from './classesTailwind';
 import { getConvertedClasses } from './helpers';
 
+const getRidHtmlAndStyle = (htmlString) => {
+  var insideHead = htmlString.match(/(?<=\<head\>\s*).*?(?=\s*\<\/head\>)/gs);
+  var insideHtmlTag = htmlString.match(/(?<=\<html\s*).*?(?=\s*\>)/gs);
+  htmlString = htmlString.replace(insideHead, '');
+  htmlString = htmlString
+    .replace(insideHead, '')
+    .replace(insideHtmlTag, '')
+    .replace('<head>', '')
+    .replace('</head>', '')
+    .replace('<html>', '')
+    .replace('</html>', '')
+    .replace('<body>', '')
+    .replace('</body>', '')
+    .replace('<!DOCTYPE html>', '');
+
+  return htmlString;
+};
+
 const getFirstElement = (input) => {
   let html = document.createElement('div');
-  html.innerHTML = input;
+  html.innerHTML = getRidHtmlAndStyle(input);
   if (html.querySelector('body')) return html.querySelector('body').children[0];
   return html.children[0];
   //   return 'section';
@@ -36,8 +52,50 @@ const getRandomString = (length) => {
   return result;
 };
 
-const generateClassCode = () => {
-  return `${getRandomString(4)}-${getRandomString(4)}-${getRandomString(4)}`;
+function generateHash1(string) {
+  var hash = 0,
+    i,
+    chr;
+  if (string.length === 0) return hash;
+  for (i = 0; i < string.length; i++) {
+    chr = string.charCodeAt(i);
+    hash = (hash << 5) - hash + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+}
+
+const generateHash2 = function (str, seed = 0) {
+  // const cyrb53 = function (str, seed = 0) {
+  let h1 = 0xdeadbeef ^ seed,
+    h2 = 0x41c6ce57 ^ seed;
+  for (let i = 0, ch; i < str.length; i++) {
+    ch = str.charCodeAt(i);
+    h1 = Math.imul(h1 ^ ch, 2654435761);
+    h2 = Math.imul(h2 ^ ch, 1597334677);
+  }
+  h1 =
+    Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^
+    Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2 =
+    Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^
+    Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+};
+
+const generateClassCode = (classes: any = undefined) => {
+  if (!classes)
+    return `${getRandomString(4)}-${getRandomString(4)}-${getRandomString(4)}`;
+  let hash = `${Base64.fromNumber(generateHash1(classes))}$${Base64.fromNumber(
+    generateHash2(classes)
+  )}`;
+  hash = hash.replace('-', classes.charAt(0));
+  hash = hash.replace('+', classes.charAt(1));
+  hash = hash.replace('/', classes.charAt(2));
+  hash = hash.replace('\\', classes.charAt(3));
+  hash = hash.replace('$', '-');
+  hash = `${classes.charAt(0)}${hash}`;
+  return hash;
 };
 
 const getNodes = (element, nodesArray = []) => {
@@ -122,18 +180,26 @@ export const getVanila = (htmlInput) => {
   for (let node of nodes) {
     let [tailwindClasses, stringTailwindClasses, stringNormalClasses] =
       getSortedTailwindClasses(node.classList);
-    let classCode = classesMap.some(
-      (item) => item.value === stringTailwindClasses
-    );
+    let itemKey;
+    let classCode = classesMap.some((item) => {
+      if (item.value === stringTailwindClasses) {
+        itemKey = item.key;
+        return item.value === stringTailwindClasses;
+      }
+      return false;
+    });
+
+    console.log('HEROOOOO');
+    console.log(classCode);
     if (stringTailwindClasses && !classCode) {
       let pendingObject = {
-        key: generateClassCode(),
+        key: generateClassCode(stringTailwindClasses),
         value: stringTailwindClasses,
       };
       classesMap.push(pendingObject);
       node.classList.add(pendingObject.key);
     } else if (stringTailwindClasses) {
-      node.classList.add(classCode);
+      node.classList.add(itemKey);
     }
     for (let c of tailwindClasses) {
       node.classList.remove(c);
@@ -150,13 +216,13 @@ export const getVanila = (htmlInput) => {
     let classStyle = getConvertedClasses(cm.value);
     if (classStyle.search('@media') == -1)
       style += `
-.${cm.key}: {
+.${cm.key} {
 ${classStyle.trim()}
 }
         `;
     else
       style += `
-.${cm.key}: {
+.${cm.key} {
 ${classStyle.split('\n\n')[0].trim()}
 }
 ${formatForMediaQuery(cm.key, classStyle.split('\n\n')[1].trim())}

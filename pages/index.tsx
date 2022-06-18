@@ -88,7 +88,7 @@ export default function App() {
         </header>
       </nav>
 
-      <section className="flex flex-row bg-gray-900 h-screen">
+      <section className="flex flex-row bg-gray-900" style={{ height: '90vh' }}>
         <textarea
           className="w-full resize-none  border-none flex-grow p-3 bg-gray-800 text-gray-300  outline-none "
           value={input}
