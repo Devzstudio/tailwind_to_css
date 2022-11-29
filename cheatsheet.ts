@@ -3536,8 +3536,18 @@ const CheatSheet = [
                         ""
                     ],
                     [
+                        "py-auto",
+                        "padding-top: auto; padding-bottom: auto;",
+                        ""
+                    ],
+                    [
                         ".py-0",
                         "padding-top: 0;\npadding-bottom: 0;",
+                        ""
+                    ],
+                    [
+                        ".px-auto",
+                        "padding-left: auto; padding-right: auto;",
                         ""
                     ],
                     [
@@ -3886,8 +3896,18 @@ const CheatSheet = [
                         ""
                     ],
                     [
+                        ".pt-auto",
+                        "padding-top: auto;",
+                        ""
+                    ],
+                    [
                         ".pt-0",
                         "padding-top: 0;",
+                        ""
+                    ],
+                    [
+                        ".pr-auto",
+                        "padding-right: auto;",
                         ""
                     ],
                     [
@@ -3896,8 +3916,18 @@ const CheatSheet = [
                         ""
                     ],
                     [
+                        ".pb-auto",
+                        "padding-bottom: auto;",
+                        ""
+                    ],
+                    [
                         ".pb-0",
                         "padding-bottom: 0;",
+                        ""
+                    ],
+                    [
+                        ".pl-auto",
+                        "padding-left: auto;",
                         ""
                     ],
                     [
@@ -4758,6 +4788,11 @@ const CheatSheet = [
                         ""
                     ],
                     [
+                        ".mx-auto",
+                        "margin-left: auto;\nmargin-right: auto;",
+                        ""
+                    ],
+                    [
                         ".mx-0",
                         "margin-left: 0;\nmargin-right: 0;",
                         ""
@@ -5108,6 +5143,11 @@ const CheatSheet = [
                         ""
                     ],
                     [
+                        ".mr-auto",
+                        "margin-right: auto;",
+                        ""
+                    ],
+                    [
                         ".mr-0",
                         "margin-right: 0;",
                         ""
@@ -5118,8 +5158,23 @@ const CheatSheet = [
                         ""
                     ],
                     [
+                        ".ml-auto",
+                        "margin-left: auto;",
+                        ""
+                    ],
+                    [
                         ".ml-0",
                         "margin-left: 0;",
+                        ""
+                    ],
+                    [
+                        ".mt-auto",
+                        "margin-top: auto;",
+                        ""
+                    ],
+                    [
+                        ".-m-0",
+                        "margin: 0;",
                         ""
                     ],
                     [
@@ -5131,6 +5186,11 @@ const CheatSheet = [
                         ".mr-0.5",
                         "margin-right: 0.125rem;",
                         "2px"
+                    ],
+                    [
+                        ".mb-auto",
+                        "margin-bottom: auto;",
+                        ""
                     ],
                     [
                         ".mb-0.5",
