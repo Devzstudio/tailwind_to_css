@@ -97,6 +97,7 @@ export default function App() {
           placeholder="Tailwind class names"
         ></textarea>
 
+        {/* CSS */}
         <div className="border-l border-gray-700" />
         <textarea
           className="w-full resize-none flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
@@ -105,6 +106,7 @@ export default function App() {
           readOnly
         ></textarea>
 
+        {/* JSS */}
         <div className="border-l border-gray-700" />
         <textarea
           className="w-full resize-none flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
