@@ -14,7 +14,7 @@ Convert Tailwind class to CSS
 
 ## ✨ Features
 
-- [x] Convert Tailwind class to CSS
+- [x] Convert Tailwind class to CSS and JSS
 - [x] Supports break points such as `xs` `sm` `md` `lg` `xl`
 
 ## 🤝 Contributing

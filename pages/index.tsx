@@ -1,26 +1,26 @@
-import { useState } from "react";
+import { ClipboardCopyIcon, PlayIcon } from "@heroicons/react/outline";
 import Head from "next/head";
 import Image from "next/image";
-import toast from "react-hot-toast";
+import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import {
-  ClipboardCopyIcon,
-  PlayIcon,
-  RefreshIcon,
-} from "@heroicons/react/outline";
 import GitHubButton from "react-github-button";
+import toast from "react-hot-toast";
+import { convertFromCssToJss, getConvertedClasses } from "../libs/helpers";
 import CodeKeep from "../public/CodeKeep.svg";
 import Logo from "../public/logo.svg";
-import { getConvertedClasses } from "../libs/helpers";
 
 export default function App() {
   const [input, setInput] = useState("");
 
   const [result, setResult] = useState("");
 
+  const [resultJSS, setResultJSS] = useState("");
+
   const processInput = () => {
     const resultCss = getConvertedClasses(input);
+    const resultJSS = convertFromCssToJss(resultCss);
     setResult(resultCss);
+    setResultJSS(resultJSS);
   };
 
   return (
@@ -34,7 +34,6 @@ export default function App() {
 
         <header className="bg-gray-900 flex py-2 px-1 md:p-2">
           <h1 className="flex-grow font-bold flex items-center text-gray-300 md:mr-2">
-            {/* <RefreshIcon className="text-gray-300 md:mr-1 w-6 h-6" /> */}
             <div className="mx-2">
               <Image
                 src={Logo}
@@ -62,16 +61,6 @@ export default function App() {
               <span className="hidden md:flex">Convert</span>
             </button>
 
-            <CopyToClipboard
-              text={result}
-              onCopy={() => toast.success("Copied!")}
-            >
-              <button className="flex items-center px-2.5 py-2 bg-gray-100 text-gray-600 hover:bg-gray-400 hover:text-gray-900 rounded">
-                <ClipboardCopyIcon className="w-6 h-6 text-gray-500 md:mr-1" />
-                <span className="hidden md:flex">Copy</span>
-              </button>
-            </CopyToClipboard>
-
             <button className="bg-gray-800 hover:bg-gray-700 rounded py-2 px-2">
               <a
                 target="_BLANK"
@@ -79,7 +68,7 @@ export default function App() {
                 rel="noreferrer noopener"
                 className="flex items-center text-gray-400"
               >
-                <span className="pr-1 text-sm hidden text-sm md:flex">
+                <span className="pr-1 text-sm hidden md:flex">
                   Sponsored by
                 </span>
                 <Image alt="CodeKeep" height={24} width={24} src={CodeKeep} />
@@ -98,13 +87,37 @@ export default function App() {
           placeholder="Tailwind class names"
         ></textarea>
 
-        <div className="border-l border-gray-700" />
-        <textarea
-          className="w-full resize-none flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
-          placeholder="Result"
-          value={result}
-          readOnly
-        ></textarea>
+        {/* CSS */}
+        <div className="flex w-full bg-gray-800 border-l border-gray-700">
+          <textarea
+            className="w-full resize-none flex-grow p-3 bg-gray-800 text-gray-300 outline-none"
+            placeholder="CSS"
+            value={result}
+            readOnly
+          ></textarea>
+          <CopyToClipboard
+            text={result}
+            onCopy={() => toast.success("Copied!")}
+          >
+            <ClipboardCopyIcon className="w-6 h-6 mt-3 text-gray-500 cursor-pointer md:mr-1" />
+          </CopyToClipboard>
+        </div>
+
+        {/* JSS */}
+        <div className="flex w-full bg-gray-800 border-l border-gray-700">
+          <textarea
+            className="w-full resize-none flex-grow p-3 bg-gray-800 text-gray-300 outline-none"
+            placeholder="JSS"
+            value={resultJSS}
+            readOnly
+          ></textarea>
+          <CopyToClipboard
+            text={resultJSS}
+            onCopy={() => toast.success("Copied!")}
+          >
+            <ClipboardCopyIcon className="w-6 h-6 mt-3 text-gray-500 cursor-pointer md:mr-1" />
+          </CopyToClipboard>
+        </div>
       </section>
     </main>
   );
