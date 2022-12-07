@@ -1,17 +1,13 @@
-import { useState } from "react";
+import { ClipboardCopyIcon, PlayIcon } from "@heroicons/react/outline";
 import Head from "next/head";
 import Image from "next/image";
-import toast from "react-hot-toast";
+import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import {
-  ClipboardCopyIcon,
-  PlayIcon,
-  RefreshIcon,
-} from "@heroicons/react/outline";
 import GitHubButton from "react-github-button";
+import toast from "react-hot-toast";
+import { getConvertedClasses } from "../libs/helpers";
 import CodeKeep from "../public/CodeKeep.svg";
 import Logo from "../public/logo.svg";
-import { getConvertedClasses } from "../libs/helpers";
 
 export default function App() {
   const [input, setInput] = useState("");
@@ -34,7 +30,6 @@ export default function App() {
 
         <header className="bg-gray-900 flex py-2 px-1 md:p-2">
           <h1 className="flex-grow font-bold flex items-center text-gray-300 md:mr-2">
-            {/* <RefreshIcon className="text-gray-300 md:mr-1 w-6 h-6" /> */}
             <div className="mx-2">
               <Image
                 src={Logo}
@@ -79,7 +74,7 @@ export default function App() {
                 rel="noreferrer noopener"
                 className="flex items-center text-gray-400"
               >
-                <span className="pr-1 text-sm hidden text-sm md:flex">
+                <span className="pr-1 text-sm hidden md:flex">
                   Sponsored by
                 </span>
                 <Image alt="CodeKeep" height={24} width={24} src={CodeKeep} />
