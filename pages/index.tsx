@@ -5,7 +5,7 @@ import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import GitHubButton from "react-github-button";
 import toast from "react-hot-toast";
-import { getConvertedClasses } from "../libs/helpers";
+import { convertFromCssToJss, getConvertedClasses } from "../libs/helpers";
 import CodeKeep from "../public/CodeKeep.svg";
 import Logo from "../public/logo.svg";
 
@@ -14,9 +14,13 @@ export default function App() {
 
   const [result, setResult] = useState("");
 
+  const [resultJSS, setResultJSS] = useState("");
+
   const processInput = () => {
     const resultCss = getConvertedClasses(input);
+    const resultJSS = convertFromCssToJss(resultCss);
     setResult(resultCss);
+    setResultJSS(resultJSS);
   };
 
   return (
@@ -96,8 +100,16 @@ export default function App() {
         <div className="border-l border-gray-700" />
         <textarea
           className="w-full resize-none flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
-          placeholder="Result"
+          placeholder="CSS"
           value={result}
+          readOnly
+        ></textarea>
+
+        <div className="border-l border-gray-700" />
+        <textarea
+          className="w-full resize-none flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
+          placeholder="JSS"
+          value={resultJSS}
           readOnly
         ></textarea>
       </section>
