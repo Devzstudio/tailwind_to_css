@@ -61,16 +61,6 @@ export default function App() {
               <span className="hidden md:flex">Convert</span>
             </button>
 
-            <CopyToClipboard
-              text={result}
-              onCopy={() => toast.success("Copied!")}
-            >
-              <button className="flex items-center px-2.5 py-2 bg-gray-100 text-gray-600 hover:bg-gray-400 hover:text-gray-900 rounded">
-                <ClipboardCopyIcon className="w-6 h-6 text-gray-500 md:mr-1" />
-                <span className="hidden md:flex">Copy</span>
-              </button>
-            </CopyToClipboard>
-
             <button className="bg-gray-800 hover:bg-gray-700 rounded py-2 px-2">
               <a
                 target="_BLANK"
@@ -98,22 +88,36 @@ export default function App() {
         ></textarea>
 
         {/* CSS */}
-        <div className="border-l border-gray-700" />
-        <textarea
-          className="w-full resize-none flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
-          placeholder="CSS"
-          value={result}
-          readOnly
-        ></textarea>
+        <div className="flex w-full bg-gray-800 border-l border-gray-700">
+          <textarea
+            className="w-full resize-none flex-grow p-3 bg-gray-800 text-gray-300 outline-none"
+            placeholder="CSS"
+            value={result}
+            readOnly
+          ></textarea>
+          <CopyToClipboard
+            text={result}
+            onCopy={() => toast.success("Copied!")}
+          >
+            <ClipboardCopyIcon className="w-6 h-6 mt-3 text-gray-500 cursor-pointer md:mr-1" />
+          </CopyToClipboard>
+        </div>
 
         {/* JSS */}
-        <div className="border-l border-gray-700" />
-        <textarea
-          className="w-full resize-none flex-grow p-3 bg-gray-800 text-gray-300 border-none outline-none"
-          placeholder="JSS"
-          value={resultJSS}
-          readOnly
-        ></textarea>
+        <div className="flex w-full bg-gray-800 border-l border-gray-700">
+          <textarea
+            className="w-full resize-none flex-grow p-3 bg-gray-800 text-gray-300 outline-none"
+            placeholder="JSS"
+            value={resultJSS}
+            readOnly
+          ></textarea>
+          <CopyToClipboard
+            text={resultJSS}
+            onCopy={() => toast.success("Copied!")}
+          >
+            <ClipboardCopyIcon className="w-6 h-6 mt-3 text-gray-500 cursor-pointer md:mr-1" />
+          </CopyToClipboard>
+        </div>
       </section>
     </main>
   );
