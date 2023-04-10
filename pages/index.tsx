@@ -5,9 +5,9 @@ import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import GitHubButton from "react-github-button";
 import toast from "react-hot-toast";
-import { convertFromCssToJss, getConvertedClasses } from "../libs/helpers";
-import CodeKeep from "../public/CodeKeep.svg";
-import Logo from "../public/logo.svg";
+import { convertFromCssToJss, getConvertedClasses } from "@/libs/helpers";
+import CodeKeep from "@/public/CodeKeep.svg";
+import Logo from "@/public/logo.svg";
 
 export default function App() {
   const [input, setInput] = useState("");
