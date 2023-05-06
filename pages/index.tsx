@@ -1,7 +1,7 @@
-import { ClipboardCopyIcon, PlayIcon } from "@heroicons/react/outline";
+import { ClipboardCopyIcon } from "@heroicons/react/outline";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import GitHubButton from "react-github-button";
 import toast from "react-hot-toast";
@@ -16,12 +16,12 @@ export default function App() {
 
   const [resultJSS, setResultJSS] = useState("");
 
-  const processInput = () => {
+  useEffect(() => {
     const resultCss = getConvertedClasses(input);
     const resultJSS = convertFromCssToJss(resultCss);
     setResult(resultCss);
     setResultJSS(resultJSS);
-  };
+  }, [input]);
 
   return (
     <main>
@@ -52,15 +52,6 @@ export default function App() {
               repo="tailwind_to_css"
               className="sm:mr-2"
             />
-
-            <button
-              className="flex items-center bg-blue-500 hover:bg-blue-600 rounded text-white px-2.5 py-2"
-              onClick={() => processInput()}
-            >
-              <PlayIcon className="w-6 h-6 text-gray-100 md:mr-1" />
-              <span className="hidden md:flex">Convert</span>
-            </button>
-
             <button className="bg-gray-800 hover:bg-gray-700 rounded py-2 px-2">
               <a
                 target="_BLANK"
