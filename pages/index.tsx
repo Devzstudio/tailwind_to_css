@@ -76,6 +76,7 @@ export default function App() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Tailwind class names"
+          onKeyUp={(e) => e.ctrlKey && e.key === "Enter" && processInput()}
         ></textarea>
 
         {/* CSS */}
