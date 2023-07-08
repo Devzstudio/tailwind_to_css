@@ -48,10 +48,16 @@ const convertToCss = (classNames: string[]) => {
     );
 
     arbitraryClasses.forEach((className) => {
-        const property = className.split("-[")[0].replace(".", "");
-        const properyValue = className.match(/(?<=\[)[^\][]*(?=])/g)[0];
-        if (arbitrarySupportedClasses[property]) {
-            cssCode += `${arbitrarySupportedClasses[property]}: ${properyValue};\n`;
+        try {
+            const property = className.split("-[")[0].replace(".", "");
+
+            const properyValue = className.match(/(?<=\[)[^\][]*(?=])/g)[0];
+            if (arbitrarySupportedClasses[property]) {
+                cssCode += `${arbitrarySupportedClasses[property]}: ${properyValue};\n`;
+            }
+        }
+        catch (e) {
+            console.log(e)
         }
     });
 

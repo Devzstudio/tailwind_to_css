@@ -4,7 +4,7 @@
 
 @layer base{
 	body{
-		@apply max-h-screen overflow-hidden bg-gray-900
+		@apply max-h-screen overflow-hidden ;
 	}
 }
 
@@ -19,7 +19,7 @@
 	font-size: 12px;
 	margin-left: 15px;
 	outline: 0px;
-} 
+}
 
 .github-btn {
 	font: bold 11px/14px 'Helvetica Neue', Helvetica, Arial, sans-serif;

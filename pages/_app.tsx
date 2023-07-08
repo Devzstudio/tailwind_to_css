@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from 'sonner';
 
 function MyApp({ Component, pageProps }) {
 	return (
