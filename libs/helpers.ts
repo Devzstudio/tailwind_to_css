@@ -1,3 +1,4 @@
+import cssToJS from "transform-css-to-js";
 import CheatSheet from "../cheatsheet";
 
 const arbitrarySupportedClasses = {
@@ -27,15 +28,12 @@ const arbitrarySupportedClasses = {
 };
 
 const convertToCss = (classNames: string[]) => {
-    console.log(classNames);
     let cssCode = ``;
     CheatSheet.forEach((element) => {
         element.content.forEach((content) => {
             content.table.forEach((list) => {
                 if (classNames.includes(list[0])) {
-                    console.log("list")
-                    console.log(list);
-                    console.log(list[1]);
+
                     cssCode += `${list[1]} \n`;
                     // const semicolon = list[1][list[1].length - 1] !== ";" ? ";" : "";
                     // if (list.length === 3) cssCode += `${list[1]}${semicolon} \n`;
@@ -75,6 +73,7 @@ const convertToCss = (classNames: string[]) => {
 
 const getBreakPoints = (input: string, breakpoint: string) => {
     return input
+        .replaceAll("\n", " ")
         .split(" ")
         .filter((i: string) => i.startsWith(breakpoint + ":"))
         .map((i: string) => i.substring(3));
@@ -82,6 +81,7 @@ const getBreakPoints = (input: string, breakpoint: string) => {
 
 const getHoverClass = (input: string) => {
     return input
+        .replaceAll("\n", " ")
         .split(" ")
         .filter((i) => i.startsWith("hover:"))
         .map((i) => i.replace("hover:", ""));
@@ -129,25 +129,11 @@ ${hoverClasses.length !== 0 ? `:hover {\n ${convertToCss(hoverClasses)} }` : ""}
     return resultCss;
 };
 
-export const convertFromCssToJss = (input: string) => {
-    const css = input.split(";");
-    let jss = "";
-
-    css.forEach((line) => {
-
-        if (line.trim() !== "" && line && !line.includes("media")) {
-
-            const property = line.split(":")[0].trim();
-            const value = line.split(":")[1] ? line.split(":")[1].trim() : null;
-
-            if (value && property) {
-                const camelCaseProperty = property.replace(/-([a-z])/g, function (g) {
-                    return g[1].toUpperCase();
-                });
-
-                jss += `${camelCaseProperty}: "${value}",\n`;
-            }
-        }
-    });
-    return jss;
+export const convertFromCssToJss = (css: string) => {
+    try {
+        const reactNativeCompatibleCSS = cssToJS(`.converted{${css}}`, true)
+        return reactNativeCompatibleCSS;
+    } catch (e) {
+        console.log(e);
+    }
 };

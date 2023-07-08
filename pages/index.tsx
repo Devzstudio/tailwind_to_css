@@ -40,7 +40,7 @@ export default function App() {
 						<span className="hidden md:flex">Tailwind To CSS</span>
 					</h1>
 
-					<section className="space-x-1 md:space-x-2 flex items-center">
+					<section className="space-x-1 md:space-x-2 flex items-center ">
 						<GitHubButton
 							type="stargazers"
 							namespace="Devzstudio"
@@ -63,12 +63,12 @@ export default function App() {
 				</header>
 			</nav>
 
-			<section className="flex flex-row bg-gray-900 h-screen">
+			<section className="flex flex-col-reverse md:flex-row bg-gray-900 h-screen ">
 				<textarea
 					className="w-full resize-none  border-none flex-grow p-3 bg-[#111] text-gray-300  outline-none "
 					value={input}
 					onChange={(e) => setInput(e.target.value)}
-					placeholder="Enter your tailwind class names here..."
+					placeholder="Enter your tailwind class names here... Eg: bg-red-500 text-center"
 					autoFocus
 				></textarea>
 
@@ -89,7 +89,7 @@ export default function App() {
 				<div className="flex w-full bg-[#111] border-l border-gray-700">
 					<textarea
 						className="w-full resize-none flex-grow p-3 bg-[#111] text-gray-300 outline-none"
-						placeholder="JSS"
+						placeholder="JSS (beta)"
 						value={resultJSS}
 						readOnly
 					></textarea>
