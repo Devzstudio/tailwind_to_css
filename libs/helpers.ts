@@ -18,7 +18,12 @@ const arbitrarySupportedClasses = {
     left: "left",
     right: "right",
     bg: "background",
+    border: "border-color",
     text: "color",
+    aspect: "aspect-ratio",
+    color: "color",
+    "max-w": "max-width",
+    "max-h": "max-height",
 };
 
 const convertToCss = (classNames: string[]) => {
@@ -28,9 +33,13 @@ const convertToCss = (classNames: string[]) => {
         element.content.forEach((content) => {
             content.table.forEach((list) => {
                 if (classNames.includes(list[0])) {
-                    const semicolon = list[1][list[1].length - 1] !== ";" ? ";" : "";
-                    if (list.length === 3) cssCode += `${list[1]}${semicolon} \n`;
-                    else cssCode += `${list[2]}${semicolon} \n`;
+                    console.log("list")
+                    console.log(list);
+                    console.log(list[1]);
+                    cssCode += `${list[1]} \n`;
+                    // const semicolon = list[1][list[1].length - 1] !== ";" ? ";" : "";
+                    // if (list.length === 3) cssCode += `${list[1]}${semicolon} \n`;
+                    // else cssCode += `${list[2]}${semicolon} \n`;
                 }
 
                 if (classNames.includes(list[1])) {
@@ -68,19 +77,22 @@ const getBreakPoints = (input: string, breakpoint: string) => {
     return input
         .split(" ")
         .filter((i: string) => i.startsWith(breakpoint + ":"))
-        .map((i: string) => "." + i.substring(3));
+        .map((i: string) => i.substring(3));
 };
 
 const getHoverClass = (input: string) => {
     return input
         .split(" ")
         .filter((i) => i.startsWith("hover:"))
-        .map((i) => i.replace("hover:", "."));
+        .map((i) => i.replace("hover:", ""));
 };
 
 export const getConvertedClasses = (input) => {
-    const classNames = input.split(/\s+/).map((i) => "." + i.trim());
-    const breakpoints = CheatSheet[0].content[3].table;
+
+    if (input === "") return "";
+
+    const classNames = input.split(/\s+/).map((i) => i.trim()).filter((i) => i !== "");
+    const breakpoints = CheatSheet[0].content[1].table;
 
     const hoverClasses = getHoverClass(input);
 
@@ -120,8 +132,10 @@ ${hoverClasses.length !== 0 ? `:hover {\n ${convertToCss(hoverClasses)} }` : ""}
 export const convertFromCssToJss = (input: string) => {
     const css = input.split(";");
     let jss = "";
+
     css.forEach((line) => {
-        if (line.trim() !== "" && line) {
+
+        if (line.trim() !== "" && line && !line.includes("media")) {
 
             const property = line.split(":")[0].trim();
             const value = line.split(":")[1] ? line.split(":")[1].trim() : null;
