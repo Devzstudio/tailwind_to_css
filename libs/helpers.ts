@@ -1,4 +1,5 @@
-import cssToJS from "transform-css-to-js";
+import postcss from "postcss";
+import postcssJs from "postcss-js";
 import CheatSheet from "../cheatsheet";
 
 const arbitrarySupportedClasses = {
@@ -35,9 +36,6 @@ const convertToCss = (classNames: string[]) => {
                 if (classNames.includes(list[0])) {
 
                     cssCode += `${list[1]} \n`;
-                    // const semicolon = list[1][list[1].length - 1] !== ";" ? ";" : "";
-                    // if (list.length === 3) cssCode += `${list[1]}${semicolon} \n`;
-                    // else cssCode += `${list[2]}${semicolon} \n`;
                 }
 
                 if (classNames.includes(list[1])) {
@@ -131,8 +129,9 @@ ${hoverClasses.length !== 0 ? `:hover {\n ${convertToCss(hoverClasses)} }` : ""}
 
 export const convertFromCssToJss = (css: string) => {
     try {
-        const reactNativeCompatibleCSS = cssToJS(`.converted{${css}}`, true)
-        return reactNativeCompatibleCSS;
+        const root = postcss.parse(css);
+        const jss = JSON.stringify(postcssJs.objectify(root))
+        return jss;
     } catch (e) {
         console.log(e);
     }
