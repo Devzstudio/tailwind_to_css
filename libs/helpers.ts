@@ -124,7 +124,7 @@ ${_2xlClasses.length !== 0
 ${hoverClasses.length !== 0 ? `:hover {\n ${convertToCss(hoverClasses)} }` : ""}
 `;
 
-    return resultCss;
+    return resultCss.trimEnd();
 };
 
 export const convertFromCssToJss = (css: string) => {
