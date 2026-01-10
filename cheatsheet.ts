@@ -12695,6 +12695,14 @@ const CheatSheet = [
                     [
                         "text-justify",
                         "text-align: justify;"
+                    ],
+                    [
+                        "text-start",
+                        "text-align: start;"
+                    ],
+                    [
+                        "text-end",
+                        "text-align: end;"
                     ]
                 ]
             },
