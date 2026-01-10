@@ -400,15 +400,15 @@ const CheatSheet = [
                     ],
                     [
                         "flow-root",
-                        "display: flow-root"
+                        "display: flow-root;"
                     ],
                     [
                         "grid",
-                        "display: grid"
+                        "display: grid;"
                     ],
                     [
                         "inline-grid",
-                        "display: inline-grid"
+                        "display: inline-grid;"
                     ],
                     [
                         "contents",
